@@ -1,0 +1,14 @@
+.lives {
+  display: flex;
+  gap: 7px;
+  flex-direction: column;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  z-index: 10;
+  i {
+    background: linear-gradient(180deg, #ffd706 0%, #ff9900 100%, #0c2a43 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

@@ -3,11 +3,17 @@ import "./App.scss";
 import React, { Component } from "react";
 import { ReactComponent as Grass } from "./assets/grass.svg";
 import { ReactComponent as Moon } from "./assets/moon.svg";
-import { CustomButton } from "./components/custom-button/CustomButton";
+
+import { StartScreen } from "./components/StartScreen/StartScreen";
+import GameContainer from "./components/GameContainer/GameContainer";
 
 export default class App extends Component {
   constructor() {
     super();
+    this.state = {
+      theWord: "tiger",
+      user: "",
+    };
   }
   render() {
     return (
@@ -17,11 +23,8 @@ export default class App extends Component {
         <Grass className="grass" />
         <div className="gradient"></div>
         {/* CONTENT */}
-        <h1 className="title">Guess The Word</h1>
-        <div className="buttons">
-          <CustomButton>Login</CustomButton>
-          <CustomButton>Play As Guest</CustomButton>
-        </div>
+        {/* <StartScreen /> */}
+        <GameContainer />
       </div>
     );
   }
