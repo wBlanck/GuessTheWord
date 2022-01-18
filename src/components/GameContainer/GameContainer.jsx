@@ -3,6 +3,7 @@ import { Lives } from "../Lives/Lives";
 import "./GameContainer.scss";
 import { ReactComponent as Owl } from "../../assets/owl.svg";
 import { Navbar } from "../Navbar/Navbar";
+import { Letters } from "../Letters/Letters";
 
 export default class GameContainer extends Component {
   constructor() {
@@ -17,6 +18,7 @@ export default class GameContainer extends Component {
       <div className="game-container">
         <Owl className="owl" />
         <Lives lives={this.state.lives} />
+        <Letters />
         <Navbar />
       </div>
     );
