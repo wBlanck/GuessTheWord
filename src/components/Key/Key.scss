@@ -12,3 +12,11 @@
   height: 35px;
   width: 40px;
 }
+.correct {
+  background: rgba(9, 129, 35, 0.72);
+  border: 1px solid rgba(17, 72, 12, 0.5);
+}
+.wrong {
+  background: rgba(129, 9, 9, 0.72);
+  border: 1px solid rgba(87, 27, 27, 0.55);
+}

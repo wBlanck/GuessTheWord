@@ -1,9 +1,15 @@
 import "./Key.scss";
 
-import React from "react";
+import React, { useContext } from "react";
+import AppContext from "../../context/AppContext";
 
 function Key({ children }) {
-  return <span className="letter">{children}</span>;
+  const { checkLetter } = useContext(AppContext);
+  return (
+    <span className="letter" onClick={checkLetter}>
+      {children}
+    </span>
+  );
 }
 
 export default Key;

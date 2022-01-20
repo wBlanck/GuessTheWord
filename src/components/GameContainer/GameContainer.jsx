@@ -6,15 +6,13 @@ import Letters from "../Letters/Letters";
 import CorrectWord from "../CorrectWord/CorrectWord";
 import { useState } from "react";
 
-function GameContainer({ correctWord }) {
-  const [lives, setLives] = useState(9);
-
+function GameContainer() {
   return (
     <div className="game-container">
       <Owl className="owl" />
       <Lives />
       <div className="wrapper">
-        <CorrectWord correctWord={correctWord} />
+        <CorrectWord />
         <Letters />
       </div>
 

@@ -1,18 +1,16 @@
 import "./Lives.scss";
 
-import React from "react";
+import React, { useContext } from "react";
+import AppContext from "../../context/AppContext";
 
 function Lives() {
+  const { lives } = useContext(AppContext);
+  const arr = Array.from(Array(lives));
   return (
     <div className="lives">
-      <i className="fas fa-heart"></i>
-      <i className="fas fa-heart"></i>
-      <i className="fas fa-heart"></i>
-      <i className="fas fa-heart"></i>
-      <i className="fas fa-heart"></i>
-      <i className="fas fa-heart"></i>
-      <i className="fas fa-heart"></i>
-      <i className="fas fa-heart"></i>
+      {arr.map((life, i) => (
+        <i key={i} className="fas fa-heart"></i>
+      ))}
     </div>
   );
 }
