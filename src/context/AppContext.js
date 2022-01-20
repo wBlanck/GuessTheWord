@@ -4,36 +4,70 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [correctWord, setCorrectWord] = useState("tiger");
-  const [startScreen, setStartScreen] = useState(true);
-  const [word, setWord] = useState("");
+  const [hint, setHint] = useState("cat");
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [showHint, setShowHint] = useState(false);
+  const [play, setPlay] = useState(false);
   const [lives, setLives] = useState(9);
+  const [word, setWord] = useState("");
   const [clickedLetters, setClickedLetters] = useState("");
 
-  const playAsGuest = () => {
-    setStartScreen(false);
+  const playAsGuest = (e) => {
+    if (e.target.textContent === "Play") {
+      const navbar = document.querySelector(".navbar");
+      navbar.classList.add("mobile");
+      //hides the "play" text
+      document.querySelector(".play").style.display = "none";
+    }
+    if (!isGameOver) {
+      setPlay(true);
+    }
   };
 
   const checkLetter = (e) => {
     const clickedLetter = e.target.textContent;
     console.log(e.target);
+
     if (!clickedLetters.includes(clickedLetter)) {
       //store clickedLetter to prevent losing life when clicking same letter multiple times
       setClickedLetters((prev) => prev + clickedLetter);
+
+      //check clickedLetter
       if (correctWord.includes(clickedLetter)) {
         setWord((prev) => prev + clickedLetter);
         e.target.classList.add("correct");
       } else {
         e.target.classList.add("wrong");
-        setLives((prev) => (prev -= 1));
+        checkLives();
       }
     }
+  };
+
+  const checkLives = () => {
+    setLives((prev) => {
+      prev -= 1;
+
+      if (prev === 0) {
+        setPlay(false);
+        setIsGameOver(true);
+
+        const navbar = document.querySelector(".navbar");
+        navbar.classList.add("expand");
+      }
+      return prev;
+    });
   };
 
   return (
     <AppContext.Provider
       value={{
+        isGameOver,
         correctWord,
-        startScreen,
+        hint,
+        showHint,
+        setShowHint,
+        setPlay,
+        play,
         playAsGuest,
         word,
         checkLetter,

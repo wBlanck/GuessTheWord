@@ -14,7 +14,8 @@ body {
   max-width: 1024px;
   margin-inline: auto;
   .title {
-    margin-top: -180px;
+    position: absolute;
+    top: 250px;
     color: #ffd706;
     font-weight: bold;
     font-size: 48px;

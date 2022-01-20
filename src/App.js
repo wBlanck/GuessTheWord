@@ -3,13 +3,14 @@ import "./App.scss";
 import { ReactComponent as Grass } from "./assets/grass.svg";
 import { ReactComponent as Moon } from "./assets/moon.svg";
 
-import StartScreen from "./components/StartScreen/StartScreen";
 import GameContainer from "./components/GameContainer/GameContainer";
 import { useContext } from "react";
 import AppContext from "./context/AppContext";
+import Navbar from "./components/Navbar/Navbar";
+import Modal from "./components/Modal/Modal";
 
 function App() {
-  const { startScreen } = useContext(AppContext);
+  const { play } = useContext(AppContext);
 
   return (
     <div className="container">
@@ -18,7 +19,9 @@ function App() {
       <Grass className="grass" />
       <div className="gradient"></div>
 
-      {startScreen ? <StartScreen /> : <GameContainer />}
+      {!play ? <h1 className="title">Guess the word</h1> : <GameContainer />}
+
+      <Navbar />
     </div>
   );
 }
