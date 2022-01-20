@@ -1,9 +1,8 @@
-import React from "react";
-import { Key } from "../Key/Key";
+import Key from "../Key/Key";
 
 import "./Letters.scss";
 
-export const Letters = ({ handleClick }) => {
+function Letters() {
   const alphabet = [
     "a",
     "b",
@@ -36,12 +35,10 @@ export const Letters = ({ handleClick }) => {
   return (
     <div className="letters">
       {alphabet.map((letter, i) => {
-        return (
-          <Key key={i} handleClick={handleClick}>
-            {letter}
-          </Key>
-        );
+        return <Key key={i}>{letter}</Key>;
       })}
     </div>
   );
-};
+}
+
+export default Letters;

@@ -1,11 +1,13 @@
-import React from "react";
 import "./Navbar.scss";
-export const Navbar = () => {
+
+function Navbar() {
   return (
     <div className="navbar">
-      <i class="fas fa-user-alt"></i>
-      <i class="fas fa-redo-alt"></i>
-      <i class="fas fa-question"></i>
+      <i className="fas fa-user-alt"></i>
+      <i className="fas fa-redo-alt"></i>
+      <i className="fas fa-question"></i>
     </div>
   );
-};
+}
+
+export default Navbar;

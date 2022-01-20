@@ -1,9 +1,9 @@
-import React from "react";
 import "./Key.scss";
-export const Key = ({ handleClick, children }) => {
-  return (
-    <span className="letter" onClick={handleClick}>
-      {children}
-    </span>
-  );
-};
+
+import React from "react";
+
+function Key({ children }) {
+  return <span className="letter">{children}</span>;
+}
+
+export default Key;

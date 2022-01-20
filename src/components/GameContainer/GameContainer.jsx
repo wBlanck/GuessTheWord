@@ -1,36 +1,26 @@
-import React, { Component } from "react";
-import { Lives } from "../Lives/Lives";
+import Lives from "../Lives/Lives";
 import "./GameContainer.scss";
 import { ReactComponent as Owl } from "../../assets/owl.svg";
-import { Navbar } from "../Navbar/Navbar";
-import { Letters } from "../Letters/Letters";
-import { CorrectWord } from "../CorrectWord/CorrectWord";
+import Navbar from "../Navbar/Navbar";
+import Letters from "../Letters/Letters";
+import CorrectWord from "../CorrectWord/CorrectWord";
+import { useState } from "react";
 
-export default class GameContainer extends Component {
-  constructor() {
-    super();
+function GameContainer({ correctWord }) {
+  const [lives, setLives] = useState(9);
 
-    this.state = {
-      lives: 9,
-    };
-  }
-  handleClick(e) {
-    console.log("hej");
-    console.log(e.target);
-  }
-
-  render() {
-    return (
-      <div className="game-container">
-        <Owl className="owl" />
-        <Lives lives={this.state.lives} />
-        <div className="wrapper">
-          <CorrectWord />
-          <Letters handleClick={this.handleClick} />
-        </div>
-
-        <Navbar />
+  return (
+    <div className="game-container">
+      <Owl className="owl" />
+      <Lives />
+      <div className="wrapper">
+        <CorrectWord correctWord={correctWord} />
+        <Letters />
       </div>
-    );
-  }
+
+      <Navbar />
+    </div>
+  );
 }
+
+export default GameContainer;

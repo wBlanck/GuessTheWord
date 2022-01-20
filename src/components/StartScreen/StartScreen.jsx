@@ -1,8 +1,9 @@
-import React from "react";
-import { CustomButton } from "../custom-button/CustomButton";
+import CustomButton from "../custom-button/CustomButton";
 import "./StartScreen.scss";
 
-export const StartScreen = () => {
+import React from "react";
+
+function StartScreen() {
   return (
     <div className="start-screen">
       <h1 className="title">Guess The Word</h1>
@@ -12,4 +13,6 @@ export const StartScreen = () => {
       </div>
     </div>
   );
-};
+}
+
+export default StartScreen;
