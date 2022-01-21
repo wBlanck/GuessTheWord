@@ -12,7 +12,7 @@ function Icons() {
     setNavbarContent({
       ...navbarContent,
       icons: false,
-      restartGame: false,
+      restart: false,
       hint: true,
       user: false,
     });
@@ -23,7 +23,7 @@ function Icons() {
     setNavbarContent({
       ...navbarContent,
       icons: false,
-      restartGame: true,
+      restart: true,
       hint: false,
       user: false,
     });

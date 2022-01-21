@@ -20,7 +20,6 @@ export const AppProvider = ({ children }) => {
   });
 
   const playAsGuest = (e) => {
-    console.log(e.target.textContent);
     if (e.target.textContent === "Play") {
       const navbar = document.querySelector(".navbar");
       navbar.classList.add("mobile");
@@ -76,7 +75,7 @@ export const AppProvider = ({ children }) => {
         ...navbarContent,
         icons: true,
         user: false,
-        restartGame: false,
+        restart: false,
         hint: false,
       });
     } else {
@@ -87,7 +86,7 @@ export const AppProvider = ({ children }) => {
           ...navbarContent,
           icons: true,
           user: false,
-          restartGame: false,
+          restart: false,
           hint: false,
         });
       } else if (lives < 2 && tradedForHint) {
@@ -100,7 +99,20 @@ export const AppProvider = ({ children }) => {
   };
 
   const restartGame = (e) => {
-    console.log("restart");
+    const navbar = document.querySelector(".navbar");
+
+    if (e.target.textContent === "yes") {
+      console.log("restart");
+    } else {
+      navbar.classList.remove("expand");
+      setNavbarContent({
+        ...navbarContent,
+        icons: true,
+        user: false,
+        restart: false,
+        hint: false,
+      });
+    }
   };
 
   return (

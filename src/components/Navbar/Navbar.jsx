@@ -13,7 +13,7 @@ function Navbar() {
       <h1>Do you want to restart?</h1>
       <div className="buttons">
         <button onClick={restartGame}>yes</button>
-        <button>no</button>
+        <button onClick={restartGame}>no</button>
       </div>
     </>
   );
