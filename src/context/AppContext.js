@@ -25,7 +25,7 @@ export const AppProvider = ({ children }) => {
       navbar.classList.add("mobile");
       //hides the "play" text
       document.querySelector(".play").remove();
-      setNavbarContent({ ...navbarContent, icons: true });
+      closeNavbar();
     }
     if (!isGameOver) {
       setPlay(true);
@@ -58,16 +58,8 @@ export const AppProvider = ({ children }) => {
       if (prev === 0) {
         setPlay(false);
         setIsGameOver(true);
-        setNavbarContent({
-          ...navbarContent,
-          icons: false,
-          user: false,
-          restart: false,
-          hint: false,
-          lost: true,
-        });
 
-        navbar.classList.add("expand");
+        openNavBar("lost", true);
       }
 
       return prev;
@@ -75,25 +67,28 @@ export const AppProvider = ({ children }) => {
   };
 
   const tradeLife = () => {
-    const navbar = document.querySelector(".navbar");
     if (lives > 1 && !tradedForHint) {
       setTradedForHint(true);
       setLives((prev) => prev - 1);
-      navbar.classList.remove("expand");
-      setNavbarContent({
-        ...navbarContent,
-        icons: true,
-        user: false,
-        restart: false,
-        hint: false,
-        lost: false,
-      });
+      closeNavbar();
     }
   };
 
   const restartGame = () => {
     console.log("restart");
   };
+
+  const openNavBar = (key, value) => {
+    console.log(key, value);
+    const navbar = document.querySelector(".navbar");
+    navbar.classList.add("expand");
+    setNavbarContent({
+      ...navbarContent,
+      icons: false,
+      [key]: value,
+    });
+  };
+
   const closeNavbar = () => {
     const navbar = document.querySelector(".navbar");
     navbar.classList.remove("expand");
@@ -106,6 +101,7 @@ export const AppProvider = ({ children }) => {
       lost: false,
     });
   };
+
   return (
     <AppContext.Provider
       value={{
