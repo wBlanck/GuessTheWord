@@ -4,12 +4,10 @@ import Icon from "../../icon/Icon";
 import "./Icons.scss";
 
 function Icons() {
-  const { setShowHint, setNavbarContent, navbarContent } =
-    useContext(AppContext);
+  const { setNavbarContent, navbarContent } = useContext(AppContext);
   const navbar = document.querySelector(".navbar");
 
   const displayHint = () => {
-    setShowHint(true);
     navbar.classList.add("expand");
     setNavbarContent({
       ...navbarContent,

@@ -6,7 +6,7 @@ export const AppProvider = ({ children }) => {
   const [correctWord, setCorrectWord] = useState("tiger");
   const [hint, setHint] = useState("cat");
   const [isGameOver, setIsGameOver] = useState(false);
-  const [showHint, setShowHint] = useState(false);
+  /*  const [showHint, setShowHint] = useState(false); */
   const [play, setPlay] = useState(false);
   const [lives, setLives] = useState(9);
   const [word, setWord] = useState("");
@@ -64,15 +64,29 @@ export const AppProvider = ({ children }) => {
       return prev;
     });
   };
+  const tradeLife = (e) => {
+    const navbar = document.querySelector(".navbar");
 
+    if (e.target.textContent === "yes") {
+      setLives((prev) => prev - 1);
+      navbar.classList.remove("expand");
+      setNavbarContent({
+        ...navbarContent,
+        icons: true,
+        user: false,
+        restartGame: false,
+        hint: false,
+      });
+    } else {
+    }
+  };
   return (
     <AppContext.Provider
       value={{
         isGameOver,
         correctWord,
         hint,
-        showHint,
-        setShowHint,
+
         setPlay,
         play,
         playAsGuest,
@@ -81,6 +95,7 @@ export const AppProvider = ({ children }) => {
         lives,
         setNavbarContent,
         navbarContent,
+        tradeLife,
       }}>
       {children}
     </AppContext.Provider>

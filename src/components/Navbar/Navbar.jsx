@@ -5,12 +5,8 @@ import Icons from "../icons/Icons";
 import "./Navbar.scss";
 
 function Navbar() {
-  const {
-    playAsGuest,
-    correctWord,
-
-    navbarContent,
-  } = useContext(AppContext);
+  const { playAsGuest, correctWord, tradeLife, navbarContent } =
+    useContext(AppContext);
 
   const restartGameContent = (
     <>
@@ -26,8 +22,8 @@ function Navbar() {
         Trade <i className="fas fa-heart"></i> for a hint?
       </h1>
       <div className="buttons">
-        <button>yes</button>
-        <button>no</button>
+        <button onClick={tradeLife}>yes</button>
+        <button onClick={tradeLife}>no</button>
       </div>
     </>
   );
