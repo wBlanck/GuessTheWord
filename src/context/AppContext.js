@@ -11,6 +11,12 @@ export const AppProvider = ({ children }) => {
   const [lives, setLives] = useState(9);
   const [word, setWord] = useState("");
   const [clickedLetters, setClickedLetters] = useState("");
+  const [navbarContent, setNavbarContent] = useState({
+    icons: false,
+    user: false,
+    restartGame: false,
+    hint: false,
+  });
 
   const playAsGuest = (e) => {
     if (e.target.textContent === "Play") {
@@ -18,6 +24,7 @@ export const AppProvider = ({ children }) => {
       navbar.classList.add("mobile");
       //hides the "play" text
       document.querySelector(".play").style.display = "none";
+      setNavbarContent({ ...navbarContent, icons: true });
     }
     if (!isGameOver) {
       setPlay(true);
@@ -72,6 +79,8 @@ export const AppProvider = ({ children }) => {
         word,
         checkLetter,
         lives,
+        setNavbarContent,
+        navbarContent,
       }}>
       {children}
     </AppContext.Provider>

@@ -14,13 +14,24 @@
   transition: all 0.5s;
   transition-property: bottom, width, height;
   transition-delay: 0s, 550ms, 50ms;
-
+  gap: 50px;
   font-weight: bold;
   font-size: 24px;
   line-height: 30px;
   color: white;
   cursor: pointer;
   z-index: 10;
+
+  button {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 7px 35px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 24px;
+    font-size: 20px;
+  }
 }
 .mobile {
   max-width: 560px;

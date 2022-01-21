@@ -1,14 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AppContext from "../../context/AppContext";
 
 import Icons from "../icons/Icons";
 import "./Navbar.scss";
 
 function Navbar() {
-  const { play, playAsGuest, correctWord, isGameOver, showHint } =
-    useContext(AppContext);
+  const {
+    playAsGuest,
+    correctWord,
 
-  const lost = (
+    navbarContent,
+  } = useContext(AppContext);
+
+  const restartGameContent = (
     <>
       <h1>You lost!</h1>
       <span>Correct word: {correctWord}</span>
@@ -16,22 +20,28 @@ function Navbar() {
     </>
   );
 
-  const hint = (
+  const hintContent = (
     <>
-      <h1>Trade 1 for a hint?</h1>
+      <h1>
+        Trade <i className="fas fa-heart"></i> for a hint?
+      </h1>
       <div className="buttons">
         <button>yes</button>
-        <button>yes</button>
+        <button>no</button>
       </div>
     </>
   );
 
+  const { icons, user, restartGame, hint } = navbarContent;
+
   return (
     <div className="navbar" onClick={playAsGuest}>
       <span className="play">Play</span>
-      {play && <Icons />}
-      {isGameOver && lost}
-      {showHint && hint}
+
+      {icons && <Icons />}
+      {user && "users"}
+      {restartGame && restartGameContent}
+      {hint && hintContent}
     </div>
   );
 }

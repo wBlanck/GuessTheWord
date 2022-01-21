@@ -4,16 +4,31 @@ import Icon from "../../icon/Icon";
 import "./Icons.scss";
 
 function Icons() {
-  const { setShowHint, hint, setPlay } = useContext(AppContext);
+  const { setShowHint, setNavbarContent, navbarContent } =
+    useContext(AppContext);
   const navbar = document.querySelector(".navbar");
 
   const displayHint = () => {
     setShowHint(true);
     navbar.classList.add("expand");
+    setNavbarContent({
+      ...navbarContent,
+      icons: false,
+      restartGame: false,
+      hint: true,
+      user: false,
+    });
   };
 
   const restartGame = () => {
     navbar.classList.add("expand");
+    setNavbarContent({
+      ...navbarContent,
+      icons: false,
+      restartGame: true,
+      hint: false,
+      user: false,
+    });
   };
 
   return (
