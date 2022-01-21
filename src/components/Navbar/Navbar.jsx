@@ -5,14 +5,16 @@ import Icons from "../icons/Icons";
 import "./Navbar.scss";
 
 function Navbar() {
-  const { playAsGuest, correctWord, tradeLife, navbarContent } =
+  const { playAsGuest, restartGame, tradeLife, navbarContent } =
     useContext(AppContext);
 
-  const restartGameContent = (
+  const restartContent = (
     <>
-      <h1>You lost!</h1>
-      <span>Correct word: {correctWord}</span>
-      <i className="fas fa-redo-alt"></i>
+      <h1>Do you want to restart?</h1>
+      <div className="buttons">
+        <button onClick={restartGame}>yes</button>
+        <button>no</button>
+      </div>
     </>
   );
 
@@ -28,7 +30,7 @@ function Navbar() {
     </>
   );
 
-  const { icons, user, restartGame, hint } = navbarContent;
+  const { icons, user, restart, hint } = navbarContent;
 
   return (
     <div className="navbar" onClick={playAsGuest}>
@@ -36,7 +38,7 @@ function Navbar() {
 
       {icons && <Icons />}
       {user && "users"}
-      {restartGame && restartGameContent}
+      {restart && restartContent}
       {hint && hintContent}
     </div>
   );

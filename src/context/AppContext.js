@@ -15,16 +15,17 @@ export const AppProvider = ({ children }) => {
   const [navbarContent, setNavbarContent] = useState({
     icons: false,
     user: false,
-    restartGame: false,
+    restart: false,
     hint: false,
   });
 
   const playAsGuest = (e) => {
+    console.log(e.target.textContent);
     if (e.target.textContent === "Play") {
       const navbar = document.querySelector(".navbar");
       navbar.classList.add("mobile");
       //hides the "play" text
-      document.querySelector(".play").style.display = "none";
+      document.querySelector(".play").remove();
       setNavbarContent({ ...navbarContent, icons: true });
     }
     if (!isGameOver) {
@@ -98,13 +99,17 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  const restartGame = (e) => {
+    console.log("restart");
+  };
+
   return (
     <AppContext.Provider
       value={{
         isGameOver,
         correctWord,
         hint,
-
+        restartGame,
         setPlay,
         play,
         playAsGuest,
