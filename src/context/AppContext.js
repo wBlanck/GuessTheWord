@@ -19,6 +19,19 @@ export const AppProvider = ({ children }) => {
     lost: false,
   });
 
+  const fetchRandomWord = async () => {
+    const response = await fetch(
+      "https://random-words-api.herokuapp.com/w?n=1"
+    );
+    const data = await response.json();
+    console.log(data[0]);
+    if (data[0].length > 7) {
+      fetchRandomWord();
+    }
+
+    setCorrectWord(data[0]);
+  };
+
   const playAsGuest = (e) => {
     if (e.target.textContent === "Play") {
       const navbar = document.querySelector(".navbar");
@@ -130,6 +143,7 @@ export const AppProvider = ({ children }) => {
         setNavbarContent,
         navbarContent,
         tradeLife,
+        fetchRandomWord,
       }}>
       {children}
     </AppContext.Provider>

@@ -4,14 +4,16 @@ import { ReactComponent as Grass } from "./assets/grass.svg";
 import { ReactComponent as Moon } from "./assets/moon.svg";
 
 import GameContainer from "./components/GameContainer/GameContainer";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AppContext from "./context/AppContext";
 import Navbar from "./components/Navbar/Navbar";
 import Modal from "./components/Modal/Modal";
 
 function App() {
-  const { play } = useContext(AppContext);
-
+  const { play, fetchRandomWord } = useContext(AppContext);
+  useEffect(() => {
+    fetchRandomWord();
+  }, []);
   return (
     <div className="container">
       <div className="sky"></div>
