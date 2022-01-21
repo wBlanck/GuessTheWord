@@ -114,6 +114,7 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        tradedForHint,
         openNavBar,
         closeNavbar,
         isGameOver,

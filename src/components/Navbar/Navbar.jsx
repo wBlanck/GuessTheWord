@@ -12,8 +12,9 @@ function Navbar() {
     tradeLife,
     navbarContent,
     correctWord,
-
+    tradedForHint,
     closeNavbar,
+    lives,
   } = useContext(AppContext);
 
   const restartContent = (
@@ -28,13 +29,26 @@ function Navbar() {
 
   const hintContent = (
     <>
-      <h1>
-        Trade <i className="fas fa-heart"></i> for a hint?
-      </h1>
-      <div className="buttons">
-        <button onClick={tradeLife}>yes</button>
-        <button onClick={closeNavbar}>no</button>
-      </div>
+      {tradedForHint && lives > 1 ? (
+        <h1> You only get one hint</h1>
+      ) : lives < 2 ? (
+        <h1>
+          cant trade last <i className="fas fa-heart"></i>
+        </h1>
+      ) : (
+        <h1>
+          Trade <i className="fas fa-heart"></i> for a hint?
+        </h1>
+      )}
+
+      {tradedForHint ? (
+        <button onClick={closeNavbar}>K then</button>
+      ) : (
+        <div className="buttons">
+          <button onClick={tradeLife}>yes</button>
+          <button onClick={closeNavbar}>no</button>
+        </div>
+      )}
     </>
   );
   const lostContent = (
