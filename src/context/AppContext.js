@@ -25,10 +25,8 @@ export const AppProvider = ({ children }) => {
       navbar.classList.add("mobile");
       //hides the "play" text
       document.querySelector(".play").remove();
-      closeNavbar();
-    }
-    if (!isGameOver) {
       setPlay(true);
+      closeNavbar();
     }
   };
 
@@ -55,9 +53,7 @@ export const AppProvider = ({ children }) => {
       prev -= 1;
 
       if (prev === 0) {
-        setPlay(false);
         setIsGameOver(true);
-
         openNavBar("lost", true);
       }
 
