@@ -15,6 +15,7 @@ function Icons() {
       restart: false,
       hint: true,
       user: false,
+      lost: false,
     });
   };
 
@@ -26,6 +27,7 @@ function Icons() {
       restart: true,
       hint: false,
       user: false,
+      lost: false,
     });
   };
 
