@@ -5,6 +5,7 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [correctWord, setCorrectWord] = useState("tiger");
   const [hint, setHint] = useState("cat");
+  const [tradedForHint, setTradedForHint] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   /*  const [showHint, setShowHint] = useState(false); */
   const [play, setPlay] = useState(false);
@@ -33,7 +34,6 @@ export const AppProvider = ({ children }) => {
 
   const checkLetter = (e) => {
     const clickedLetter = e.target.textContent;
-    console.log(e.target);
 
     if (!clickedLetters.includes(clickedLetter)) {
       //store clickedLetter to prevent losing life when clicking same letter multiple times
@@ -66,8 +66,9 @@ export const AppProvider = ({ children }) => {
   };
   const tradeLife = (e) => {
     const navbar = document.querySelector(".navbar");
-
-    if (e.target.textContent === "yes") {
+    console.log(e.target.textContent);
+    if (lives > 1 && e.target.textContent === "yes" && !tradedForHint) {
+      setTradedForHint(true);
       setLives((prev) => prev - 1);
       navbar.classList.remove("expand");
       setNavbarContent({
@@ -78,8 +79,25 @@ export const AppProvider = ({ children }) => {
         hint: false,
       });
     } else {
+      if (e.target.textContent === "no") {
+        console.log("NO");
+        navbar.classList.remove("expand");
+        setNavbarContent({
+          ...navbarContent,
+          icons: true,
+          user: false,
+          restartGame: false,
+          hint: false,
+        });
+      } else if (lives < 2 && tradedForHint) {
+        lives < 2 && console.log("not enough lives");
+      } else {
+        lives < 2 && console.log("not enough lives");
+        tradedForHint && console.log("already traded");
+      }
     }
   };
+
   return (
     <AppContext.Provider
       value={{
