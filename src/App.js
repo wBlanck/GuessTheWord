@@ -11,10 +11,11 @@ import Navbar from "./components/Navbar/Navbar";
 import HintModal from "./components/HintModal/HintModal";
 
 function App() {
-  const { play, fetchRandomWord } = useContext(AppContext);
-  /* useEffect(() => {
-    fetchRandomWord();
-  }, []); */
+  const { play, fetchRandomWord, fetchHint } = useContext(AppContext);
+  useEffect(() => {
+    /* fetchRandomWord(); */
+    fetchHint();
+  }, []);
   return (
     <div className="container">
       <div className="sky"></div>
