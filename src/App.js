@@ -11,10 +11,9 @@ import Navbar from "./components/Navbar/Navbar";
 import HintModal from "./components/HintModal/HintModal";
 
 function App() {
-  const { play, fetchRandomWord, fetchHint } = useContext(AppContext);
+  const { play, fetchRandomWord } = useContext(AppContext);
   useEffect(() => {
-    /* fetchRandomWord(); */
-    fetchHint();
+    fetchRandomWord();
   }, []);
   return (
     <div className="container">

@@ -32,20 +32,24 @@ export const AppProvider = ({ children }) => {
     setCorrectWord(data[0]);
   };
 
-  const fetchHint = async () => {
+  /* const fetchHint = async () => {
     const response = await fetch(
       `https://api.dictionaryapi.dev/api/v2/entries/en/${correctWord}`
     );
     const data = await response.json();
 
     const synonym = data[0].meanings[0].definitions[0].synonyms[0];
-
+    console.log(synonym);
+    
+    
+    
+    
     if (synonym) {
       setHint(synonym);
     } else {
       setHint("there is no hint");
     }
-  };
+  }; */
 
   const playAsGuest = (e) => {
     if (e.target.textContent === "Play") {
@@ -122,7 +126,7 @@ export const AppProvider = ({ children }) => {
         letter.classList.remove("correct");
       }
     });
-
+    fetchRandomWord();
     setLives(9);
     setTradedForHint(false);
     setClickedLetters("");
@@ -161,7 +165,6 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        fetchHint,
         tradedForHint,
         openNavBar,
         closeNavbar,
