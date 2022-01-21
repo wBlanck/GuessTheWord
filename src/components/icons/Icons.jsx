@@ -8,13 +8,13 @@ function Icons() {
 
   return (
     <div className="icons">
-      <Icon style="user-alt"></Icon>
+      <Icon icon="user-alt"></Icon>
       <Icon
-        style="redo-alt"
+        icon="redo-alt"
         handleClick={() => openNavBar("restart", true)}></Icon>
       <Icon
-        style="question"
-        handleClick={() => openNavBar("hint", true)}></Icon>
+        icon="question"
+        handleClick={() => openNavBar("hintContent", true)}></Icon>
     </div>
   );
 }

@@ -15,7 +15,7 @@ export const AppProvider = ({ children }) => {
     icons: false,
     user: false,
     restart: false,
-    hint: false,
+    hintContent: false,
     lost: false,
   });
 
@@ -52,7 +52,15 @@ export const AppProvider = ({ children }) => {
 
       //check clickedLetter
       if (correctWord.includes(clickedLetter)) {
-        setWord((prev) => prev + clickedLetter);
+        setWord((prev) => {
+          console.log(prev, "before");
+          prev += clickedLetter;
+          console.log(prev, "after");
+          if (correctWord.length === word.length) {
+            console.log("YOU WON");
+          }
+          return prev;
+        });
         e.target.classList.add("correct");
       } else {
         e.target.classList.add("wrong");
@@ -74,10 +82,18 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const checkIfWon = () => {
+    if (correctWord.length === word.length) {
+      console.log("YOU WON");
+    }
+  };
+
   const tradeLife = () => {
     if (lives > 1 && !tradedForHint) {
+      toggleHintModal();
       setTradedForHint(true);
       setLives((prev) => prev - 1);
+
       closeNavbar();
     }
   };
@@ -96,7 +112,7 @@ export const AppProvider = ({ children }) => {
     setTradedForHint(false);
     setClickedLetters("");
     setWord("");
-
+    toggleHintModal();
     closeNavbar();
   };
 
@@ -110,7 +126,10 @@ export const AppProvider = ({ children }) => {
       [key]: value,
     });
   };
-
+  const toggleHintModal = () => {
+    const hintModal = document.querySelector(".hint-modal");
+    hintModal.classList.toggle("expand-hint");
+  };
   const closeNavbar = () => {
     const navbar = document.querySelector(".navbar");
     navbar.classList.remove("expand");
@@ -119,7 +138,7 @@ export const AppProvider = ({ children }) => {
       icons: true,
       user: false,
       restart: false,
-      hint: false,
+      hintContent: false,
       lost: false,
     });
   };

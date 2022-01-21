@@ -27,10 +27,10 @@ function Navbar() {
     </>
   );
 
-  const hintContent = (
+  const hintEles = (
     <>
       {tradedForHint && lives > 1 ? (
-        <h1> You only get one hint</h1>
+        <h1> you already traded </h1>
       ) : lives < 2 ? (
         <h1>
           cant trade last <i className="fas fa-heart"></i>
@@ -59,7 +59,7 @@ function Navbar() {
     </>
   );
 
-  const { icons, user, restart, hint, lost } = navbarContent;
+  const { icons, user, restart, hintContent, lost } = navbarContent;
 
   return (
     <div className="navbar" onClick={playAsGuest}>
@@ -68,7 +68,7 @@ function Navbar() {
       {icons && <Icons />}
       {user && "users"}
       {restart && restartContent}
-      {hint && hintContent}
+      {hintContent && hintEles}
       {lost && lostContent}
     </div>
   );
