@@ -4,38 +4,17 @@ import Icon from "../../icon/Icon";
 import "./Icons.scss";
 
 function Icons() {
-  const { setNavbarContent, navbarContent } = useContext(AppContext);
-  const navbar = document.querySelector(".navbar");
-
-  const displayHint = () => {
-    navbar.classList.add("expand");
-    setNavbarContent({
-      ...navbarContent,
-      icons: false,
-      restart: false,
-      hint: true,
-      user: false,
-      lost: false,
-    });
-  };
-
-  const restartGame = () => {
-    navbar.classList.add("expand");
-    setNavbarContent({
-      ...navbarContent,
-      icons: false,
-      restart: true,
-      hint: false,
-      user: false,
-      lost: false,
-    });
-  };
+  const { openNavBar } = useContext(AppContext);
 
   return (
     <div className="icons">
       <Icon style="user-alt"></Icon>
-      <Icon style="redo-alt" handleClick={restartGame}></Icon>
-      <Icon style="question" handleClick={displayHint}></Icon>
+      <Icon
+        style="redo-alt"
+        handleClick={() => openNavBar("restart", true)}></Icon>
+      <Icon
+        style="question"
+        handleClick={() => openNavBar("hint", true)}></Icon>
     </div>
   );
 }

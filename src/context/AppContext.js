@@ -51,7 +51,6 @@ export const AppProvider = ({ children }) => {
   };
 
   const checkLives = () => {
-    const navbar = document.querySelector(".navbar");
     setLives((prev) => {
       prev -= 1;
 
@@ -75,7 +74,21 @@ export const AppProvider = ({ children }) => {
   };
 
   const restartGame = () => {
-    console.log("restart");
+    const letters = document.querySelector(".letters").children;
+    //remove classes from previous clicked letters
+    Array.from(letters).map((letter) => {
+      if (clickedLetters.includes(letter.textContent)) {
+        letter.classList.remove("wrong");
+        letter.classList.remove("correct");
+      }
+    });
+
+    setLives(9);
+    setTradedForHint(false);
+    setClickedLetters("");
+    setWord("");
+
+    closeNavbar();
   };
 
   const openNavBar = (key, value) => {
@@ -105,6 +118,7 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        openNavBar,
         closeNavbar,
         isGameOver,
         correctWord,

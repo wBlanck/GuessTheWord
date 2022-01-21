@@ -12,11 +12,10 @@ function Navbar() {
     tradeLife,
     navbarContent,
     correctWord,
-    setNavbarContent,
+
     closeNavbar,
   } = useContext(AppContext);
 
-  const navbar = document.querySelector(".navbar");
   const restartContent = (
     <>
       <h1>Do you want to restart?</h1>
