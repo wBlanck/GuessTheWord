@@ -1,9 +1,11 @@
 import { createContext, useState } from "react";
+import Icon from "../icon/Icon";
 
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [correctWord, setCorrectWord] = useState("tiger");
+  const [isLoading, setIsLoading] = useState(true);
   const [hint, setHint] = useState("cat");
   const [tradedForHint, setTradedForHint] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
@@ -28,7 +30,7 @@ export const AppProvider = ({ children }) => {
     if (data[0].length > 7) {
       fetchRandomWord();
     }
-
+    setIsLoading(false);
     setCorrectWord(data[0]);
   };
 
@@ -53,12 +55,21 @@ export const AppProvider = ({ children }) => {
 
   const playAsGuest = (e) => {
     if (e.target.textContent === "Play") {
-      const navbar = document.querySelector(".navbar");
-      navbar.classList.add("mobile");
-      //hides the "play" text
-      document.querySelector(".play").remove();
-      setPlay(true);
-      closeNavbar();
+      if (!isLoading) {
+        //hides the "play" text
+        document.querySelector(".navbar").innerHTML =
+          '<i class="fas fa-redo-alt" style="animation: spin 1s linear infinite"></i>';
+        console.log("loading DATA");
+      } else {
+        //animate the navbar to the bottom
+        const navbar = document.querySelector(".navbar");
+
+        navbar.classList.add("mobile");
+        //hides the "play" text
+        document.querySelector(".play").remove();
+        setPlay(true);
+        closeNavbar();
+      }
     }
   };
 
@@ -127,6 +138,7 @@ export const AppProvider = ({ children }) => {
       }
     });
 
+    //reset to defaults
     if (tradedForHint) toggleHintModal();
     fetchRandomWord();
     setLives(9);
@@ -137,7 +149,6 @@ export const AppProvider = ({ children }) => {
   };
 
   const openNavBar = (key, value) => {
-    console.log(key, value);
     const navbar = document.querySelector(".navbar");
     navbar.classList.add("expand");
     setNavbarContent({
@@ -146,10 +157,12 @@ export const AppProvider = ({ children }) => {
       [key]: value,
     });
   };
+
   const toggleHintModal = () => {
     const hintModal = document.querySelector(".hint-modal");
     hintModal.classList.toggle("expand-hint");
   };
+
   const closeNavbar = () => {
     const navbar = document.querySelector(".navbar");
     navbar.classList.remove("expand");
@@ -166,6 +179,7 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        isLoading,
         tradedForHint,
         openNavBar,
         closeNavbar,

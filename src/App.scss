@@ -2,10 +2,17 @@ body,
 button {
   font-family: "Amatic SC", cursive;
 }
-
+.main-container {
+  position: relative;
+  height: 100vh;
+}
 .container {
   height: 100vh;
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   overflow: hidden;
   text-align: center;
   display: flex;
@@ -13,7 +20,9 @@ button {
   justify-content: center;
   flex-direction: column;
   max-width: 1024px;
-  margin-inline: auto;
+  max-height: 862px;
+  margin: auto;
+
   .title {
     position: absolute;
     top: 250px;
@@ -66,5 +75,14 @@ button {
     background: linear-gradient(180deg, #ffd706 0%, #ff9900 100%, #0c2a43 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }
