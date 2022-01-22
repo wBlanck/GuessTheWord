@@ -6,6 +6,7 @@ import AppContext from "../../context/AppContext";
 
 function CorrectWord() {
   const { correctWord, word } = useContext(AppContext);
+  /* const theWord = []; */
 
   return (
     <div className="correct-word">

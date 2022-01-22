@@ -58,8 +58,14 @@ function Navbar() {
       <Icon icon="redo-alt" handleClick={restartGame}></Icon>
     </>
   );
-
-  const { icons, user, restart, hintContent, lost } = navbarContent;
+  const wonContent = (
+    <>
+      <h1>You Won!</h1>
+      <p>Correct word is: {correctWord} </p>
+      <Icon icon="redo-alt" handleClick={restartGame}></Icon>
+    </>
+  );
+  const { icons, user, restart, hintContent, lost, won } = navbarContent;
 
   return (
     <div className="navbar" onClick={playAsGuest}>
@@ -70,6 +76,7 @@ function Navbar() {
       {restart && restartContent}
       {hintContent && hintEles}
       {lost && lostContent}
+      {won && wonContent}
     </div>
   );
 }

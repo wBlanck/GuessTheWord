@@ -4,7 +4,7 @@ import Icon from "../icon/Icon";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [correctWord, setCorrectWord] = useState("tiger");
+  const [correctWord, setCorrectWord] = useState("hello");
   const [isLoading, setIsLoading] = useState(true);
   const [hint, setHint] = useState("cat");
   const [tradedForHint, setTradedForHint] = useState(false);
@@ -19,6 +19,7 @@ export const AppProvider = ({ children }) => {
     restart: false,
     hintContent: false,
     lost: false,
+    won: false,
   });
 
   const fetchRandomWord = async () => {
@@ -82,15 +83,22 @@ export const AppProvider = ({ children }) => {
 
       //check clickedLetter
       if (correctWord.includes(clickedLetter)) {
+        let test = "";
+        for (let i = 0; i < correctWord.length; i++) {
+          if (correctWord[i] === clickedLetter) {
+            test += correctWord[i];
+          }
+        }
+
         setWord((prev) => {
-          console.log(prev, "before");
-          prev += clickedLetter;
-          console.log(prev, "after");
-          if (correctWord.length === word.length) {
-            console.log("YOU WON");
+          prev += test;
+          //check if won
+          if (prev.length === correctWord.length) {
+            openNavBar("won", true);
           }
           return prev;
         });
+
         e.target.classList.add("correct");
       } else {
         e.target.classList.add("wrong");
@@ -113,9 +121,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const checkIfWon = () => {
-    if (correctWord.length === word.length) {
-      console.log("YOU WON");
-    }
+    console.log("Checking:", word.length);
   };
 
   const tradeLife = () => {
@@ -158,11 +164,6 @@ export const AppProvider = ({ children }) => {
     });
   };
 
-  const toggleHintModal = () => {
-    const hintModal = document.querySelector(".hint-modal");
-    hintModal.classList.toggle("expand-hint");
-  };
-
   const closeNavbar = () => {
     const navbar = document.querySelector(".navbar");
     navbar.classList.remove("expand");
@@ -173,7 +174,13 @@ export const AppProvider = ({ children }) => {
       restart: false,
       hintContent: false,
       lost: false,
+      won: false,
     });
+  };
+
+  const toggleHintModal = () => {
+    const hintModal = document.querySelector(".hint-modal");
+    hintModal.classList.toggle("expand-hint");
   };
 
   return (
@@ -184,6 +191,7 @@ export const AppProvider = ({ children }) => {
         openNavBar,
         closeNavbar,
         isGameOver,
+
         correctWord,
         hint,
         restartGame,
@@ -191,6 +199,7 @@ export const AppProvider = ({ children }) => {
         play,
         playAsGuest,
         word,
+        setWord,
         checkLetter,
         lives,
         setNavbarContent,
