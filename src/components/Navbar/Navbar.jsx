@@ -61,7 +61,9 @@ function Navbar() {
   const wonContent = (
     <>
       <h1>You Won!</h1>
-      <p>Correct word is: {correctWord} </p>
+      <p>
+        Correct word is: <span style={{ color: "green" }}>{correctWord}</span>{" "}
+      </p>
       <Icon icon="redo-alt" handleClick={restartGame}></Icon>
     </>
   );

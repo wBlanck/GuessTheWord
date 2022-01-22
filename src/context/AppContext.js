@@ -23,7 +23,7 @@ export const AppProvider = ({ children }) => {
   });
 
   const fetchRandomWord = async () => {
-    /* const response = await fetch(
+    const response = await fetch(
       "https://random-words-api.herokuapp.com/w?n=1"
     );
     const data = await response.json();
@@ -32,7 +32,7 @@ export const AppProvider = ({ children }) => {
       fetchRandomWord();
     }
     setIsLoading(false);
-    setCorrectWord(data[0]); */
+    setCorrectWord(data[0]);
   };
 
   /* const fetchHint = async () => {
@@ -56,21 +56,14 @@ export const AppProvider = ({ children }) => {
 
   const playAsGuest = (e) => {
     if (e.target.textContent === "Play") {
-      if (!isLoading) {
-        //hides the "play" text
-        document.querySelector(".navbar").innerHTML =
-          '<i class="fas fa-redo-alt" style="animation: spin 1s linear infinite"></i>';
-        console.log("loading DATA");
-      } else {
-        //animate the navbar to the bottom
-        const navbar = document.querySelector(".navbar");
+      //animate the navbar to the bottom
+      const navbar = document.querySelector(".navbar");
 
-        navbar.classList.add("mobile");
-        //hides the "play" text
-        document.querySelector(".play").remove();
-        setPlay(true);
-        closeNavbar();
-      }
+      navbar.classList.add("mobile");
+      //hides the "play" text
+      document.querySelector(".play").remove();
+      setPlay(true);
+      closeNavbar();
     }
   };
 

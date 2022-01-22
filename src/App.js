@@ -14,10 +14,9 @@ import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 function App() {
   const { play, fetchRandomWord, isLoading } = useContext(AppContext);
 
-  /*   useEffect(() => {
+  useEffect(() => {
     fetchRandomWord();
   }, []);
-  */
 
   return (
     <div className="main-container">
