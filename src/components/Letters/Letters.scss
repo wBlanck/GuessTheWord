@@ -9,6 +9,9 @@
   padding: 0 15px;
   max-width: 560px;
   .letter {
+    cursor: pointer;
+  }
+  .letter {
     &:nth-child(25) {
       grid-column: 3;
     }

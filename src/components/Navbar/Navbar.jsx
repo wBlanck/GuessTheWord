@@ -41,7 +41,7 @@ function Navbar() {
         </h1>
       )}
 
-      {tradedForHint ? (
+      {tradedForHint || (lives < 2 && !tradedForHint) ? (
         <button onClick={closeNavbar}>K then</button>
       ) : (
         <div className="buttons">
