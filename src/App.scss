@@ -2,6 +2,9 @@ body,
 button {
   font-family: "Amatic SC", cursive;
 }
+body {
+  background: linear-gradient(180deg, #01051e -3%, #101d19 61%, #0c2c45 100%);
+}
 .main-container {
   position: relative;
   height: 100vh;
