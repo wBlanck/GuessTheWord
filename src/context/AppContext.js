@@ -126,12 +126,13 @@ export const AppProvider = ({ children }) => {
         letter.classList.remove("correct");
       }
     });
+
+    if (tradedForHint) toggleHintModal();
     fetchRandomWord();
     setLives(9);
     setTradedForHint(false);
     setClickedLetters("");
     setWord("");
-    toggleHintModal();
     closeNavbar();
   };
 

@@ -55,7 +55,7 @@ function Navbar() {
     <>
       <h1>You lost!</h1>
       <p>Correct word is: {correctWord} </p>
-      <Icon style="redo-alt" handleClick={restartGame}></Icon>
+      <Icon icon="redo-alt" handleClick={restartGame}></Icon>
     </>
   );
 

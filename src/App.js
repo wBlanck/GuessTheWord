@@ -12,9 +12,9 @@ import HintModal from "./components/HintModal/HintModal";
 
 function App() {
   const { play, fetchRandomWord } = useContext(AppContext);
-  useEffect(() => {
+  /*  useEffect(() => {
     fetchRandomWord();
-  }, []);
+  }, []); */
   return (
     <div className="container">
       <div className="sky"></div>
