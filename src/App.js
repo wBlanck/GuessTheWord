@@ -17,7 +17,12 @@ function App() {
   useEffect(() => {
     fetchRandomWord();
   }, []);
-
+  window.addEventListener("resize", () => {
+    console.log();
+    document
+      .querySelector(":root")
+      .style.setProperty("--vh", window.innerHeight);
+  });
   return (
     <div className="main-container">
       <div className="container">
