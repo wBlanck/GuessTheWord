@@ -22,7 +22,7 @@ export const AppProvider = ({ children }) => {
   });
 
   const fetchRandomWord = async () => {
-    const response = await fetch(
+    /* const response = await fetch(
       "https://random-words-api.herokuapp.com/w?n=1"
     );
     const data = await response.json();
@@ -31,7 +31,7 @@ export const AppProvider = ({ children }) => {
       fetchRandomWord();
     }
     setIsLoading(false);
-    setCorrectWord(data[0]);
+    setCorrectWord(data[0]); */
   };
 
   /* const fetchHint = async () => {
