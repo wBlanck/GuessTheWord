@@ -1,36 +1,44 @@
-import "./App.scss";
-
-import { ReactComponent as Grass } from "./assets/grass.svg";
-import { ReactComponent as Moon } from "./assets/moon.svg";
-
-import GameContainer from "./components/GameContainer/GameContainer";
-import { useContext, useEffect } from "react";
-import AppContext from "./context/AppContext";
-import Navbar from "./components/Navbar/Navbar";
-
-import HintModal from "./components/HintModal/HintModal";
-import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
+import { useState } from "react";
+import GameContainer from "./components/GameContainer";
 
 function App() {
-  const { play, fetchRandomWord, isLoading } = useContext(AppContext);
+  const [gameState, setGameState] = useState({
+    hasWon: false,
+    hasLost: false,
+    isPlaying: false,
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [lives, setLives] = useState(1);
 
-  useEffect(() => {
-    fetchRandomWord();
-  }, []);
+  //loading spinner function, set isPlaying inside
+  const fetchData = () => {
+    setIsLoading((prev) => !prev);
+    setTimeout(() => {
+      setIsLoading((prev) => !prev);
+      setGameState({ ...gameState, isPlaying: true });
+    }, 3000);
+  };
+
+  const { isPlaying } = gameState;
 
   return (
-    <div className="main-container">
-      <div className="container">
-        <div className="sky"></div>
-        <Moon className="moon" />
-        <Grass className="grass" />
-        <div className="gradient"></div>
-        <HintModal />
-        {/* <LoadingSpinner /> */}
-        {!play ? <h1 className="title">Guess the word</h1> : <GameContainer />}
+    <div className={`container ${!isPlaying && "content-center"}`}>
+      {!isLoading && !isPlaying && (
+        <button className="play-btn" onClick={fetchData}>
+          Play
+        </button>
+      )}
 
-        <Navbar />
-      </div>
+      {isLoading && <h1>Loading Data!</h1>}
+
+      {isPlaying && (
+        <GameContainer
+          lives={lives}
+          setLives={setLives}
+          setGameState={setGameState}
+          gameState={gameState}
+        />
+      )}
     </div>
   );
 }
