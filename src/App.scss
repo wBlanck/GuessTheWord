@@ -1,6 +1,3 @@
-:root {
-  --vh: 100vh;
-}
 body,
 button {
   font-family: "Amatic SC", cursive;
@@ -16,7 +13,6 @@ button {
   height: 100vh;
 }
 .container {
-  height: var(--vh);
   position: absolute;
   top: 0;
   right: 0;
