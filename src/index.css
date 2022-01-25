@@ -28,6 +28,9 @@ code {
 }
 .game-container {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .navbar {
   position: relative;
@@ -35,14 +38,13 @@ code {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: auto;
   padding: 15px;
   transition: all 0.5s;
   height: 0%;
 }
 .navbar > .buttons {
   position: absolute;
-  top: 5px;
+  bottom: 5px;
   right: 0;
   left: 0;
 }
@@ -63,4 +65,16 @@ code {
 }
 .expand {
   height: 50%;
+}
+
+.lives {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.lives .life {
+  display: block;
+  height: 15px;
+  width: 15px;
+  background-color: gray;
 }

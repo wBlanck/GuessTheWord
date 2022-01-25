@@ -8,7 +8,7 @@ function App() {
     isPlaying: false,
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [lives, setLives] = useState(1);
+  const [lives, setLives] = useState(5);
 
   //loading spinner function, set isPlaying inside
   const fetchData = () => {
@@ -16,7 +16,7 @@ function App() {
     setTimeout(() => {
       setIsLoading((prev) => !prev);
       setGameState({ ...gameState, isPlaying: true });
-    }, 3000);
+    }, 1000);
   };
 
   const { isPlaying } = gameState;

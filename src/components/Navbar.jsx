@@ -5,10 +5,15 @@ function Navbar({ lives, setLives, setGameState, gameState }) {
   const [expandNavbar, setExpandNavbar] = useState(false);
 
   const tradeLife = () => {
+    console.log("lives prev", lives);
     setLives((prev) => {
       prev -= 1;
+      // if life = 0, change gamestate
+      console.log(prev);
       prev === 0 && setGameState({ ...gameState, hasLost: true });
+      return prev;
     });
+
     setExpandNavbar((prev) => !prev);
   };
 
@@ -62,7 +67,7 @@ function Navbar({ lives, setLives, setGameState, gameState }) {
   );
 
   return (
-    <div className={`navbar ${expandNavbar && "expand"}`}>
+    <div className={`navbar ${expandNavbar ? "expand" : ""}`}>
       {buttons}
 
       {expandNavbar && navbarContent}
