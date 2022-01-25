@@ -8,7 +8,7 @@ function App() {
     isPlaying: false,
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [lives, setLives] = useState(5);
+  const [lives, setLives] = useState(1);
 
   //loading spinner function, set isPlaying inside
   const fetchData = () => {

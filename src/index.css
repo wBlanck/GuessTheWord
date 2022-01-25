@@ -78,3 +78,33 @@ code {
   width: 15px;
   background-color: gray;
 }
+
+.letters-container {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+}
+.correct-letters {
+  display: flex;
+  gap: 10px;
+}
+.alphabet {
+  display: flex;
+  gap: 10px;
+}
+.letter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(12, 45, 72, 0.56);
+  border: 1px solid #0c2d48;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 25%);
+  color: #fff;
+  font-weight: 700;
+  line-height: 25px;
+  padding: 4px 12px;
+  width: 38px;
+  height: 35px;
+}
