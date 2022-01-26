@@ -1,5 +1,5 @@
 ### First React project
-### GUESS THE WORD (work in progress)
+# GUESS THE WORD (work in progress)
 
 https://guesstheowl.netlify.app/
 
